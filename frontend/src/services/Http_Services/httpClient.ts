@@ -143,7 +143,7 @@ export const useTypeSpiritApi = () => {
           authorization: Globals.VITE_AUTHORIZATION,
         },
       });
-      setData(response.data.spiritTypes);
+      setData(response.data);
     } catch (error) {
       const errorMessage = errorsService.getError(error);
       setErrorMessage(errorMessage);
@@ -154,9 +154,8 @@ export const useTypeSpiritApi = () => {
   };
 
   useEffect(() => {
-    // Fetch data when the component mounts
     getTypeSpirit();
-  }, []); // The empty dependency array ensures that this effect runs only once on mount
+  }, []);
 
   return { data, loading, errorMessage };
 };

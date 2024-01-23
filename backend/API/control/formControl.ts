@@ -39,9 +39,9 @@ export async function addForm(req: any, res: any) {
     };
     
     // const deleteAllImages = await emptyS3Bucket(); //Deletes Bucket before saving new images
-    const apiUrl = process.env.FORM_API_URL;
-    const response = await axios.post(apiUrl, bottleData);
-    console.log(response);
+    // const apiUrl = process.env.FORM_API_URL;
+    // const response = await axios.post(apiUrl, bottleData);
+    // console.log(response);
     res.send({ ok: true, bottleData });
   } catch (error) {
     console.error("An error occurred:", error);

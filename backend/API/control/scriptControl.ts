@@ -26,22 +26,22 @@ export async function getImages(req: any, res: any) {
     for (const imageInfo of currentPage) {
       const s3Key = generateS3Key();
       const base64Image = await imageToBase64(imageInfo.imgSrc);
-      base64Images.push({ imgSrc: base64Image, s3Key: s3Key });
+      base64Images.push({ imgSrc: base64Image});
 
-      const imageBuffer = Buffer.from(base64Image, "base64");
-      await s3Factory.uploadFile({
-        Bucket: process.env.BUCKET_NAME,
-        Key: `${s3Key}.png`,
-        Body: imageBuffer,
-      });
+      // const imageBuffer = Buffer.from(base64Image, "base64");
+      // await s3Factory.uploadFile({
+      //   Bucket: process.env.BUCKET_NAME,
+      //   Key: `${s3Key}.png`,
+      //   Body: imageBuffer,
+      // });
 
       // collect the S3 URL and push it to the array
-      const s3Url = `https://${process.env.BUCKET_NAME}.s3.amazonaws.com/${s3Key}.png`;
-      s3Urls.push({s3Url});
-      console.log(s3Url);
+    //   const s3Url = `https://${process.env.BUCKET_NAME}.s3.amazonaws.com/${s3Key}.png`;
+    //   s3Urls.push({s3Url});
+    //   console.log(s3Url);
     }
 
-    return res.status(200).send({ images: s3Urls });
+    return res.status(200).send({ images: base64Images });
   } catch (error) {
     console.error("An error occurred:", error);
     return res.status(500).json({ error: "Internal Server Error" });

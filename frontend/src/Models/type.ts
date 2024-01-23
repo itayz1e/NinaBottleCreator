@@ -10,7 +10,7 @@ export type ImageBottle = {
 };
 
 export type ImageData = {
-  s3Url: string;
+  imgSrc: string;
   s3Key: string;
 };
 

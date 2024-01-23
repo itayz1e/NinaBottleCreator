@@ -20,7 +20,7 @@ const ImageNavigator: React.FC<ImageNavigatorProps> = ({
     onInputChange,
   });
   const { imageSearch, currentPage, setCurrentPageValue } = useImageContext(); // Extracted from context
-
+  console.log(bottleImages)
   const handleFetchNextPage = () => {
     fetchNextPage(imageSearch);
   };
@@ -42,15 +42,15 @@ const ImageNavigator: React.FC<ImageNavigatorProps> = ({
       </button>
       {bottleImages.map((image, index: any) => (
         <div key={index} className="imageContainer">
-          <div onClick={() => handleImageSelect(image.s3Url)}>
+          <div onClick={() => handleImageSelect(image.imgSrc)}>
             <div
               className={`imageBox ${
-                selectedImage === image.s3Url ? "selected" : ""
+                selectedImage === image.imgSrc ? "selected" : ""
               }`}
             >
-              {image.s3Url ? (
+              {image.imgSrc ? (
                 <img
-                  src={`${image.s3Url}`}
+                  src={`data:image/jpeg;base64,${image.imgSrc}`}
                   className="image"
                   alt="picture"
                   onError={(e) => {
@@ -86,7 +86,7 @@ const ImageNavigator: React.FC<ImageNavigatorProps> = ({
         <span className="image_selected_text">selected picture</span>
         <div className="SelectedBox">
           {selectedImage ? (
-            <img src={`${selectedImage}`} alt="Selected" />
+            <img src={`data:image/jpeg;base64,${selectedImage}`} alt="Selected" />
           ) : (
             <div className="emptyBoxContainer">
               <div className="image emptyBox"></div>

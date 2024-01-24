@@ -1,4 +1,4 @@
 // ** React Imports
 import axios from "axios";
-axios.defaults.baseURL = "https://nina-bottle-creator-backend.vercel.app/"
+axios.defaults.baseURL = "http://localhost:3000"
 export const serverApi = axios

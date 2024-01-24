@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": "http://localhost:3000",
+      "/api": "https://nina-bottle-creator-backend-4nyhbhsow-itayz1es-projects.vercel.app",
     },
   },
 });

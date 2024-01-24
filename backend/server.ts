@@ -26,6 +26,7 @@ app.use('/api/spirit', spiritTypeRoute);
 app.use('/api/image', imageRoute)
 app.use('/api/login', loginRoute)
 
+
 app.listen(port, () => {
   console.log(`runnig on ${port}`)
 })

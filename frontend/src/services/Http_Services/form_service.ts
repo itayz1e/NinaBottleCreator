@@ -44,6 +44,7 @@ export async function handleFormSubmission(
             const bottleData = await submitFormData(finalFormData);
             setMessage("Success!");
             setErrorMessage("");
+            console.log(bottleData);
         } catch (error) {
             const errorMessage = errorsService.getError(error);
             setErrorMessage(errorMessage);
